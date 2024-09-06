@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  test:
+    image: mefistocl/ros2:rolling
+    container_name: test
+    restart: "no"
+    privileged: true
+    environment:
+      - DISPLAY=:0
+      - IGN_GAZEBO_RESOURCE_PATH=/root/ros2_ws/src/engo_gazebo/models
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /dev:/dev 
+      - ./test:/root/ros2_ws
+    ports:
+      - "11345:11345"
+      - "11311:11311"
